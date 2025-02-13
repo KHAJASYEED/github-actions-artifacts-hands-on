@@ -23,17 +23,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps: 
-       - name: Checkout code
-         uses: actions/checkout@v4
+      - name: Download text file
+        uses: actions/download-artifact@v4
+        with:
+          name: hello-artifact
+          path: ./artifacts
 
-       - name: Download Artifacts
-         uses: actions/download-artifact@v4
-         with:
-           name: hello-artifact
-           path: ./artifacts
-
-       - name: Display text.txt
-         run: cat ./artifacts/hello.txt    
+      - name: Display content of the text file
+        run: cat ./artifacts/hello.txt 
 
 
 
